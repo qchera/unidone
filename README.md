@@ -1,4 +1,4 @@
-# Unidone
+# Unidone — Student Task Manager
 
 Task manager for students — MVP built with Next.js.
 
