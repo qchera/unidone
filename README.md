@@ -1,5 +1,7 @@
 # Unidone — Student Task Manager
 
+![CI/CD](https://github.com/qchera/unidone/actions/workflows/ci-cd.yml/badge.svg)
+
 Task manager for students — MVP built with Next.js.
 
 ## Features
@@ -22,3 +24,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Production
+
+🔗 [https://unidone.vercel.app](https://unidone.vercel.app)
