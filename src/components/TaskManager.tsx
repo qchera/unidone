@@ -3,6 +3,7 @@
 import { useState } from "react";
 import posthog from "posthog-js";
 import { useFeatureFlagEnabled } from "posthog-js/react";
+import * as Sentry from "@sentry/nextjs";
 
 interface Task {
   id: string;
@@ -16,6 +17,9 @@ export default function TaskManager() {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState<Task["priority"]>("medium");
   const showUrgentFilter = useFeatureFlagEnabled("show-urgent-filter");
+
+  // Simulate user login for Sentry context
+  Sentry.setUser({ id: "1", email: "student@unidone.app" });
 
   const addTask = () => {
     if (!title.trim()) return;
@@ -123,6 +127,16 @@ export default function TaskManager() {
           </li>
         ))}
       </ul>
+      <button
+        onClick={() => {
+          const error = new Error("Break the world! Sentry test error");
+          Sentry.captureException(error);
+          console.error(error);
+        }}
+        className="mt-6 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+      >
+        💥 Break the world
+      </button>
     </div>
   );
 }
